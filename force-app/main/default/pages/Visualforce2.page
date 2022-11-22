@@ -1,0 +1,21 @@
+<!--
+ - Created by 25916 on 2022/11/17.
+ -->
+
+<apex:page id="Visualforce2" standardController="Account">
+    <apex:form id="myRender">
+        <apex:pageBlock title="Edit Account">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!Account.name}"/>
+                <apex:inputField value="{!Account.phone}"/>
+                <apex:inputField value="{!Account.Industry}"/>
+                <apex:inputField value="{!Account.AnnualRevenue}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons style=" margin: 0 auto">
+                <apex:commandButton value="Save" action="{!save}"></apex:commandButton>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+
+
+</apex:page>

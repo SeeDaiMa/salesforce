@@ -1,0 +1,4 @@
+<apex:page >
+    111
+    $user.name
+</apex:page>

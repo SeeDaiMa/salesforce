@@ -1,0 +1,28 @@
+<apex:page controller="MyFirstCtl" sidebar="false">
+    <!-- Begin Default Content REMOVE THIS -->
+    <apex:form id="myRender">
+        <apex:pageBlock >
+
+            <apex:panelGrid columns="4">
+                <apex:outputLabel value="关键字" />
+                <apex:inputText value="{!keyWord}" />
+                <apex:commandButton value="搜索" reRender="myRender" action="{!dynamicSearch}" />
+            </apex:panelGrid>
+
+            <apex:pageBlockTable value="{!accs}" var="acc">
+                <apex:column value="{!acc.Name}" />
+                <apex:column value="{!acc.AccountNumber}" />
+                <apex:column value="{!acc.AccountSource}" />
+                <apex:column value="{!acc.Type}" />
+                <apex:column value="{!acc.Website}" />
+            </apex:pageBlockTable>
+            <apex:panelGrid columns="5"  style="margin : 0 auto">
+                <apex:commandButton value="|<" action="{!firstPage}">  </apex:commandButton> 
+                <apex:commandButton value="<" action="{!beforePage}">  </apex:commandButton> 
+                <apex:outputText value="{!currentPage}" />
+                <apex:commandButton value=">" action="{!afterPage}">  </apex:commandButton> 
+                <apex:commandButton value=">|" action="{!endPage}">  </apex:commandButton> 
+            </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

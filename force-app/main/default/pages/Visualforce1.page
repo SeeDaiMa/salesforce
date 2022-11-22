@@ -1,0 +1,6 @@
+<apex:page standardController="Account">
+<!-- Begin Default Content REMOVE THIS -->
+
+<!-- End Default Content REMOVE THIS -->
+<apex:detail subject="{!account.id}" relatedList="false" title="false"/>
+</apex:page>

@@ -1,0 +1,65 @@
+<apex:page controller="OpportunityAddProduct" sidebar="false">
+<!-- 选择产品 -->
+<apex:form id="myRender1">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!optionPes}" var="pe">
+            <apex:column >
+                <!-- <apex:facet name="header">Active</apex:facet> -->
+                <!-- <apex:facet name="footer">column footer</apex:facet> -->
+                <!-- 删除 -->
+                <apex:commandButton value="Remove" action="{!}"/>      
+            </apex:column>
+            <apex:column value="{!pe.name}" /> <!--产品名称-->
+            <apex:column value="{!pe.Product2.ProductCode}" /><!--产品代码-->
+            <apex:column value="{!pe.Product2.Type}" /> <!-- 产品类型 -->
+            <!-- 特征属性 -->
+            <apex:column value="{!pe.Product2.Description}" /><!-- 产品描述 --> 
+            <apex:column value="{!pe.UnitPrice}" /><!-- 价目表价格 --> 
+            <!-- 列表价 -->
+        </apex:pageBlockTable>
+        <apex:pageBlockButtons style="margin : 0 auto">
+            <apex:commandButton value="保存" action="{!}"> </apex:commandButton>
+            <apex:commandButton value="取消" action="{!}"> </apex:commandButton>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form>
+
+
+<!-- 搜索产品 -->
+    <apex:form id="myRender2">
+        <apex:pageBlock >
+
+            <apex:panelGrid columns="4">
+                <apex:outputLabel value="搜索产品" />
+                <apex:inputText value="{!keyWord}" />
+                <apex:commandButton value="模糊搜索" reRender="myRender2" action="{!dynamicSearch}" />
+                <apex:commandButton value="精确搜索" reRender="myRender2" action="{!accurateSearch}" />
+            </apex:panelGrid>
+
+            <apex:pageBlockTable value="{!pes}" var="pe">
+                
+                <apex:column style="margin: 0,padding 0" >
+                    <apex:facet name="header">Active</apex:facet>
+                    <!-- <apex:facet name="footer">column footer</apex:facet> -->
+                    <!-- 添加 -->
+                    <apex:commandButton value="选择" action="{!}"/>     
+                </apex:column>
+
+                <apex:column value="{!pe.name}" /> <!--产品名称-->
+                <apex:column value="{!pe.Product2.ProductCode}" /><!--产品代码-->
+                <apex:column value="{!pe.Product2.Type}" /> <!-- 产品类型 -->
+                <!-- 特征属性 -->
+                <apex:column value="{!pe.Product2.Description}" /><!-- 产品描述 --> 
+                <apex:column value="{!pe.UnitPrice}" /><!-- 价目表价格 --> 
+                <!-- 列表价 -->
+            </apex:pageBlockTable>
+            <apex:panelGrid columns="5" style="margin : 0 auto">
+                <apex:commandButton value="|<" action="{!firstPage}"> </apex:commandButton>
+                <apex:commandButton value="<" action="{!beforePage}"> </apex:commandButton>
+                <apex:outputText value="{!currentPage}" />
+                <apex:commandButton value=">" action="{!afterPage}"> </apex:commandButton>
+                <apex:commandButton value=">|" action="{!endPage}"> </apex:commandButton>
+            </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

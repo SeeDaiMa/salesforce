@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableforallpagetypes"
+access="global">
+    
+</aura:component>	
